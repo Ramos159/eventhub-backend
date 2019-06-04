@@ -2,7 +2,7 @@ class TicketController < ApplicationController
   def create
     ticket = Ticket.new(user_id:params[:user_id],venue_event_id:params[:venue_event_id])
     if ticket.save
-      render json:ticket
+        render json:{TicketSerializer.new(ticket)}
     else
       render json:{error:'ticket didnt save!'}
   end
@@ -18,9 +18,10 @@ class TicketController < ApplicationController
   end
 
   def destroy
+    user = session_user
       ticket = Ticket.find(params[:id])
-      if ticket.save
-        render json:ticket
+      if ticket.destroy
+        render json:{message:'ticket destroyed'}
       else
         render json:{error:'ticket didnt delete!'}
   end

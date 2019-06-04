@@ -6,7 +6,7 @@ class ReviewController < ApplicationController
     review = review.new(user_id:user,venue_event_id:event.id,rating:params[:rating],body:params[:body])
 
     if review.save
-      render json: review
+      render json: {ReviewSerializer.new(review)}
     else
     render json:{error:'invalid review!'}
   end
@@ -21,8 +21,9 @@ class ReviewController < ApplicationController
   end
 
   def destroy
+    user = session_user
     review = Review.find(params[:id])
     if review.destroy
-      render json: {message:"review destroyed"}
+      render json: user.reviews
   end
 end
