@@ -1,21 +1,25 @@
 Rails.application.routes.draw do
-  get 'ticket/create'
-  get 'ticket/index'
-  get 'ticket/show'
-  get 'ticket/destroy'
-  get 'review/create'
-  get 'review/index'
-  get 'review/show'
-  get 'review/destroy'
-  get 'venue/index'
-  get 'venue/show'
-  get 'venue_event/index'
-  get 'venue_event/show'
-  get 'event/index'
-  get 'event/show'
-  get 'user/create'
-  get 'user/index'
-  get 'user/show'
-  get 'user/destroy'
+  post 'ticket/create', to:"ticket#create"
+  get 'ticket/index', to:"ticket#index"
+  get 'ticket/show/:id', to:"ticket#show"
+  delete 'ticket/destroy/:id', to:"ticket#destroy"
+  post 'review/create', to:"review#create"
+  get 'review/index', to:"review#index"
+  get 'review/show/:id', to:"review#show"
+  delete 'review/destroy/:id', to:"review#destroy"
+  get 'venue/index', to:"venue#index"
+  get 'venue/show/:id', to:"venue#show"
+  get 'venue_event/index', to:"venue_event#index"
+  get 'venue_event/show/:id', to:"venue_event#show"
+  get 'event/index', to:"event#index"
+  get 'event/show/:id', to:"event#show"
+  post 'user/create', to:"user#create"
+  get 'user/index', to:"user#index"
+  # patch 'user/update/:id',to:"user#update"
+  get 'user/show/:id', to:"user#show"
+  patch'user/edit/:id', to:"user#edit"
+  delete 'user/destroy/:id', to:"user#destroy"
+  post'/login',to:"auth#login"
+  post'/autolog',to:"auth#autologin"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
