@@ -8,16 +8,14 @@
 require 'rest-client'
 require 'pry'
 
-api_links=["https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=sports&countryCode=US&apikey=#{}",
-"https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=music&countryCode=US&apikey=irFpOPl65CEFGdW8ru8JNYw3s4VDFrAV",
-"https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=Arts&Theatre&countryCode=US&apikey=irFpOPl65CEFGdW8ru8JNYw3s4VDFrAV",
-"https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=miscellaneous&countryCode=US&apikey=irFpOPl65CEFGdW8ru8JNYw3s4VDFrAV"]
+api_links=["https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=sports&countryCode=US&apikey=#{Rails.application.credentials.api}",
+"https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=music&countryCode=US&apikey=#{Rails.application.credentials.api}",
+"https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=Arts&Theatre&countryCode=US&apikey=#{Rails.application.credentials.api}",
+"https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=miscellaneous&countryCode=US&apikey=#{Rails.application.credentials.api}"]
 
-response = RestClient.get('https://app.ticketmaster.com/discovery/v2/events.json?size=200&countryCode=US&apikey=irFpOPl65CEFGdW8ru8JNYw3s4VDFrAV')
-response_JSON = JSON.parse(response)
-events =  response_JSON["_embedded"]["events"]
 venue_checker = {}
 event_checker = {}
+#just something to put on term, ticketmaster api limit at 200 for discovery
 counter=0
 # you can def put this two objects into one, come back to it later
 
