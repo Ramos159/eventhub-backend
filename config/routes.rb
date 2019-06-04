@@ -1,3 +1,21 @@
 Rails.application.routes.draw do
+  get 'ticket/create'
+  get 'ticket/index'
+  get 'ticket/show'
+  get 'ticket/destroy'
+  get 'review/create'
+  get 'review/index'
+  get 'review/show'
+  get 'review/destroy'
+  get 'venue/index'
+  get 'venue/show'
+  get 'venue_event/index'
+  get 'venue_event/show'
+  get 'event/index'
+  get 'event/show'
+  get 'user/create'
+  get 'user/index'
+  get 'user/show'
+  get 'user/destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
