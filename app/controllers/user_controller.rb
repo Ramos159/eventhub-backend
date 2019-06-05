@@ -8,8 +8,11 @@ class UserController < ApplicationController
 
     if user.save
       # token = encode_token(user)
-      render json: {user: UserSerializer.new(user)
-        # , token: token
+      render json: {
+        username:user.username,
+        avatar:user.avater,
+        tickets:create_user_tickets(user.id),
+        reviews:create_user_reviews(user.id)
       }
 		else
 			render json: {errors: user.errors.full_messages}
@@ -23,7 +26,12 @@ class UserController < ApplicationController
 
   def show
     user=User.find(params[:id])
-    render json: user
+    render json: {
+      username:user.username,
+      avatar:user.avatar,
+      tickets:create_user_tickets(user.id),
+      reviews:create_user_reviews(user.id)
+    }
   end
 
   def destroy
@@ -33,6 +41,24 @@ class UserController < ApplicationController
   end
 
   def edit
+  end
+
+  def create_user_reviews(id)
+    user = User.find(id)
+    obj={}
+    user.reviews.each do |review|
+      obj[review.id] = review
+    end
+    obj
+  end
+
+  def create_user_tickets(id)
+    user = User.find(id)
+    obj={}
+    user.tickets.each do |ticket|
+      obj[ticket.id] = ticket
+    end
+    obj
   end
 
 end
