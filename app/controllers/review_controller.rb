@@ -6,24 +6,41 @@ class ReviewController < ApplicationController
     review = review.new(user_id:user,venue_event_id:event.id,rating:params[:rating],body:params[:body])
 
     if review.save
-      render json: {ReviewSerializer.new(review)}
+      render json: create_review_obj
     else
-    render json:{error:'invalid review!'}
+      render json:{error:'invalid review!'}
+    end
+
   end
 
-  def index
-    reviews = Review.all
-    render json:reviews
+  def create_review_obj
+    obj = {}
+    Review.all.each do |event|
+      obj[event.id] = event
+    end
+    obj
   end
-
-  def show
-    review = Review.find(params[:id])
-  end
+  # def index
+  #   reviews = Review.all
+  #   render json:reviews
+  # end
+  #
+  # def show
+  #   review = Review.find(params[:id])
+  # end
 
   def destroy
-    user = session_user
+    # user = session_user
     review = Review.find(params[:id])
     if review.destroy
       render json: user.reviews
+    else
+      render json:{error:"couldnt delete review"}
+    end
+
+
   end
+
+
+
 end

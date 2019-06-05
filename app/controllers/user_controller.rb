@@ -7,8 +7,10 @@ class UserController < ApplicationController
     )
 
     if user.save
-      token = encode_token(user)
-      render json: {user: UserSerializer.new(user), token: token}
+      # token = encode_token(user)
+      render json: {user: UserSerializer.new(user)
+        # , token: token
+      }
 		else
 			render json: {errors: user.errors.full_messages}
 		end

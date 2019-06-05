@@ -7,7 +7,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.hstore :classifications, default:{}
       t.text :images,array: true, default: []
 
-      t.timestamps
+      # t.timestamps
     end
   end
 end

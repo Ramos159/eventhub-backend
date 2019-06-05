@@ -21,8 +21,6 @@ ActiveRecord::Schema.define(version: 2019_06_03_224828) do
     t.boolean "on_sale"
     t.hstore "classifications", default: {}
     t.text "images", default: [], array: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -47,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_06_03_224828) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
+    t.string "avatar"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -69,8 +68,6 @@ ActiveRecord::Schema.define(version: 2019_06_03_224828) do
     t.hstore "address_info", default: {"latitude"=>nil, "longitude"=>nil}
     t.hstore "box_office_info", default: {}
     t.text "images", default: [], array: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "reviews", "users"

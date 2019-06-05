@@ -2,7 +2,15 @@ class EventController < ApplicationController
 
   def index
     events = Event.all
-    render json: events
+    render json: create_event_obj
+  end
+
+  def create_event_obj
+    obj = {}
+    Event.all.each do |event|
+      obj[event.id] = event
+    end
+    obj
   end
 
   def show

@@ -120,29 +120,40 @@ def create_venue_event(event_data,event,venue)
 end
 
 def set_boxoffice_info(venue,venue_data)
-  if venue["box_office_info"]["phone_details"]
-    venue["box_office_info"]["phone_details"]= venue_data["boxOfficeInfo"]["phoneNumberDetail"]
-  else
-    venue["box_office_info"]["phone_details"]= nil
-  end
 
-  if venue["box_office_info"]["accepted_payments"]
-    venue["box_office_info"]["accepted_payments"]= venue_data["boxOfficeInfo"]["acceptedPaymentDetail"]
-  else
-    venue["box_office_info"]["accepted_payments"]= nil
-  end
+  if venue_data["boxOfficeInfo"]
+    if venue_data["boxOfficeInfo"]["phoneNumberDetail"]
+      venue["box_office_info"]["phone_details"]= venue_data["boxOfficeInfo"]["phoneNumberDetail"]
+    else
+      venue["box_office_info"]["phone_details"]= nil
+    end
 
-  if venue["box_office_info"]["open_hours"]
-    venue["box_office_info"]["open_hours"]= venue_data["boxOfficeInfo"]["openHoursDetail"]
-  else
-    venue["box_office_info"]["open_hours"]= nil
-  end
+    if venue_data["boxOfficeInfo"]["acceptedPaymentDetail"]
+      venue["box_office_info"]["accepted_payments"]= venue_data["boxOfficeInfo"]["acceptedPaymentDetail"]
+    else
+      venue["box_office_info"]["accepted_payments"]= nil
+    end
 
-    if venue["box_office_info"]["will_call_details"]
+    if venue_data["boxOfficeInfo"]["openHoursDetail"]
+      venue["box_office_info"]["open_hours"]= venue_data["boxOfficeInfo"]["openHoursDetail"]
+    else
+      venue["box_office_info"]["open_hours"]= nil
+    end
+
+    if venue_data["boxOfficeInfo"]["willCallDetail"]
       venue["box_office_info"]["will_call_details"]= venue_data["boxOfficeInfo"]["willCallDetail"]
     else
-       venue["box_office_info"]["will_call_details"]= nil
+     venue["box_office_info"]["will_call_details"]= nil
     end
+
+  else
+    venue["box_office_info"]["phone_details"]= nil
+    venue["box_office_info"]["accepted_payments"]= nil
+    venue["box_office_info"]["open_hours"]= nil
+    venue["box_office_info"]["will_call_details"]= nil
+  end
+
+
 end
 
 
@@ -240,4 +251,3 @@ end
   ticker = Ticket.create(user_id:1,venue_event_id:1)
   venue_event = VenueEvent.find(1)
   review = Review.create(user_id:1,venue_event_id:1,rating:10,body:"THIS IS GREAT WOOOOOO")
-  binding.pry
