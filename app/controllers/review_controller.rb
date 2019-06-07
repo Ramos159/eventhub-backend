@@ -20,10 +20,11 @@ class ReviewController < ApplicationController
     end
     obj
   end
-  # def index
-  #   reviews = Review.all
-  #   render json:reviews
-  # end
+
+  def index
+    reviews = Review.all
+    render json: create_review_obj
+  end
   #
   # def show
   #   review = Review.find(params[:id])

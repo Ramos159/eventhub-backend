@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # get 'tickets/show/:id', to:"ticket#show"
   delete 'tickets/destroy/:id', to:"ticket#destroy"
   post 'reviews/create', to:"review#create"
-  # get 'reviews/index', to:"review#index"
+  get 'reviews/index', to:"review#index"
   # get 'reviews/show/:id', to:"review#show"
   delete 'reviews/destroy/:id', to:"review#destroy"
   get 'venues/index', to:"venue#index"

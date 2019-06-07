@@ -122,6 +122,7 @@ end
 def set_boxoffice_info(venue,venue_data)
 
   if venue_data["boxOfficeInfo"]
+
     if venue_data["boxOfficeInfo"]["phoneNumberDetail"]
       venue["box_office_info"]["phone_details"]= venue_data["boxOfficeInfo"]["phoneNumberDetail"]
     else
