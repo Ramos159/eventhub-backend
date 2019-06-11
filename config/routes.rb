@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # get 'tickets/index', to:"ticket#index"
   # get 'tickets/show/:id', to:"ticket#show"
   delete 'tickets/destroy/:id', to:"ticket#destroy"
+  patch 'tickets/purchase/:id', to:"ticket#purchase"
   post 'reviews/create', to:"review#create"
   get 'reviews/index', to:"review#index"
   # get 'reviews/show/:id', to:"review#show"

@@ -253,4 +253,3 @@ end
   ticket = Ticket.create(user_id:1,venue_event_id:1)
   venue_event = VenueEvent.find(1)
   review = Review.create(user_id:1,venue_event_id:1,rating:10,body:"THIS IS GREAT WOOOOOO")
-  binding.pry

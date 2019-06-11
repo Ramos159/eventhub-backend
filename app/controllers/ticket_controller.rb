@@ -1,16 +1,25 @@
 class TicketController < ApplicationController
 
   def create
-    ticket = Ticket.new(user_id:params[:user_id],venue_event_id:params[:venue_event_id],bought?:false)
-    user = user.find_by(id:params[:user_id])
+    ticket = Ticket.new(user_id:params["UserID"],venue_event_id:params["venueEventID"])
+    user = User.find_by(id:params["UserID"])
     if ticket.save
-        render json:{UserSerializer.new(user)}
+        render json:{user:UserSerializer.new(user)}
     else
       render json:{error:'ticket didnt save!'}
     end
 
   end
 
+  def purchase
+    ticket = Ticket.find(params[:id])
+    user = User.find_by(id:params["UserID"])
+    if ticket.update(id:params[:id],bought:true)
+        render json:{user:UserSerializer.new(user)}
+    else
+      render json:{error:'ticket didnt save!'}
+    end
+  end
   # def index
   #   tickets = Ticket.all
   #   render json: create_ticket_obj
@@ -33,11 +42,12 @@ class TicketController < ApplicationController
   def destroy
     # user = session_user
     ticket = Ticket.find(params[:id])
+    user = User.find_by(id:params["UserID"])
     if ticket.destroy
-      render json:{message:'ticket destroyed'}
+      render json:{user:UserSerializer.new(user)}
     else
       render json:{error:'ticket didnt delete!'}
     end
-end
+    end
 
 end
