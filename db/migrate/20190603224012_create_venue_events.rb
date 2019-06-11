@@ -4,6 +4,7 @@ class CreateVenueEvents < ActiveRecord::Migration[5.2]
       enable_extension 'hstore' unless extension_enabled?('hstore')
       t.references :event, foreign_key: true
       t.references :venue, foreign_key: true
+      t.boolean :on_sale
       t.hstore :sale_info, default:{}
       t.hstore :pricing_info, default:{}
       t.hstore :event_info, default:{}

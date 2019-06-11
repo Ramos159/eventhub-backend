@@ -2,17 +2,20 @@ class UserController < ApplicationController
 
   def create
     user = User.new(
-      username:params[:username],
-      password:params[:password]
+      username:params["Username"],
+      password:params["Password"],
+      email:params["Email"],
+      avatar:nil
     )
 
     if user.save
-      # token = encode_token(user)
+      token = encode_token(user)
       render json: {
         username:user.username,
-        avatar:user.avater,
+        avatar:user.avatar,
         tickets:create_user_tickets(user.id),
-        reviews:create_user_reviews(user.id)
+        reviews:create_user_reviews(user.id),
+        token: token
       }
 		else
 			render json: {errors: user.errors.full_messages}

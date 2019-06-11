@@ -1,9 +1,10 @@
 class TicketController < ApplicationController
 
   def create
-    ticket = Ticket.new(user_id:params[:user_id],venue_event_id:params[:venue_event_id])
+    ticket = Ticket.new(user_id:params[:user_id],venue_event_id:params[:venue_event_id],bought?:false)
+    user = user.find_by(id:params[:user_id])
     if ticket.save
-        render json:{TicketSerializer.new(ticket)}
+        render json:{UserSerializer.new(user)}
     else
       render json:{error:'ticket didnt save!'}
     end

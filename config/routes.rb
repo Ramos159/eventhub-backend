@@ -13,13 +13,13 @@ Rails.application.routes.draw do
   # get 'venue_events/show/:id', to:"venue_event#show"
   get 'events/index', to:"event#index"
   # get 'events/show/:id', to:"event#show"
-  post 'users/create', to:"user#create"
+  post '/register', to:"user#create"
   # get 'users/index', to:"user#index"
   # patch 'user/update/:id',to:"user#update"
   get 'users/show/:id', to:"user#show"
   patch'users/edit/:id', to:"user#edit"
   # delete 'users/destroy/:id', to:"user#destroy"
   post'login',to:"auth#login"
-  post'autolog',to:"auth#autologin"
+  post'auto_login',to:"auth#autologin"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

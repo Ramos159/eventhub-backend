@@ -103,6 +103,7 @@ def create_venue_event(event_data,event,venue)
   set_pricing_info(ve,event_data)
   set_event_info(ve,event_data)
   set_sale_info(ve,event_data)
+  check_for_sale(ve,event_data)
   if event.id
     ve.event_id = event.id
   else
@@ -219,7 +220,7 @@ end
  def create_event(event)
    new_event = Event.new
    new_event.name = event["name"]
-   check_for_sale(new_event,event)
+   # check_for_sale(new_event,event)
    set_categories(new_event,event)
    set_event_images(new_event,event)
    new_event.save
@@ -248,7 +249,8 @@ end
   end
 
   run_database(api_links,venue_checker,event_checker,counter)
-  user = User.create(username:"edwin",password_digest:"ed")
-  ticker = Ticket.create(user_id:1,venue_event_id:1)
+  user = User.create(username:"edwin",password:"ed",email:"edwinramos269@gmail.com",avatar:"https://png.pngtree.com/svg/20170308/508749a69e.svg")
+  ticket = Ticket.create(user_id:1,venue_event_id:1)
   venue_event = VenueEvent.find(1)
   review = Review.create(user_id:1,venue_event_id:1,rating:10,body:"THIS IS GREAT WOOOOOO")
+  binding.pry
