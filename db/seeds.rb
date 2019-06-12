@@ -234,8 +234,13 @@ def go_through_events(events,venue_checker,event_checker,counter)
     new_event = check_event(event,event_checker)
     new_venue = check_venue(event,venue_checker)
     new_venue_event = create_venue_event(event,new_event,new_venue)
-    counter = counter +1
-    puts(counter)
+    if new_venue.id != nil
+      # puts new_event.classifications["main_category"]
+      counter = counter +1
+      puts(counter)
+    else
+      binding.pry
+    end
   end
 end
 
