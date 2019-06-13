@@ -13,6 +13,8 @@ api_links=["https://app.ticketmaster.com/discovery/v2/events.json?size=200&class
 "https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=Arts&Theatre&countryCode=US&apikey=#{Rails.application.credentials.api}",
 "https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=miscellaneous&countryCode=US&apikey=#{Rails.application.credentials.api}"]
 
+suggest_link = "https://app.ticketmaster.com/discovery/v2/suggest.json?apikey=#{Rails.application.credentials.api}"
+
 venue_checker = {}
 event_checker = {}
 #just something to put on term, ticketmaster api limit at 200 for discovery
@@ -253,8 +255,45 @@ end
     end
   end
 
+  def check_suggested_event(event)
+    checked_event = Event.find_by(name:event["name"])
+    if checked_event === nil
+    else
+      checked_event.update(suggested:true)
+      puts"#{checked_event.name}"
+    end
+  end
+
+  def check_suggested_venue(venue)
+    checked_venue = Venue.find_by(name:venue["name"])
+    if checked_venue === nil
+    else
+      checked_venue.update(suggested:true)
+      puts"#{checked_venue.name}"
+    end
+  end
+
+
+  def run_suggested(link)
+      resp = RestClient.get(link)
+      resp_json = JSON.parse(resp)
+      good_stuff = resp_json["_embedded"]
+      events = good_stuff["events"]
+      venues = good_stuff["venues"]
+
+      events.each do |event|
+        check_suggested_event(event)
+      end
+
+      venues.each do |venue|
+        check_suggested_venue(venue)
+      end
+  end
+
   run_database(api_links,venue_checker,event_checker,counter)
   user = User.create(username:"edwin",password:"ed",email:"edwinramos269@gmail.com",avatar:"https://png.pngtree.com/svg/20170308/508749a69e.svg")
   ticket = Ticket.create(user_id:1,venue_event_id:1)
   venue_event = VenueEvent.find(1)
   review = Review.create(user_id:1,venue_event_id:1,rating:10,body:"THIS IS GREAT WOOOOOO")
+
+  run_suggested(suggest_link)

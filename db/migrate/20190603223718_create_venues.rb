@@ -9,6 +9,7 @@ class CreateVenues < ActiveRecord::Migration[5.2]
       }
       t.hstore :box_office_info, default:{}
       t.text :images,array: true, default: []
+      t.boolean :suggested, default:false
 
       # t.timestamps
     end

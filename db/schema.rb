@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_06_03_224828) do
     t.string "name"
     t.hstore "classifications", default: {}
     t.text "images", default: [], array: true
+    t.boolean "suggested", default: false
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_06_03_224828) do
     t.hstore "address_info", default: {"latitude"=>nil, "longitude"=>nil}
     t.hstore "box_office_info", default: {}
     t.text "images", default: [], array: true
+    t.boolean "suggested", default: false
   end
 
   add_foreign_key "reviews", "users"
