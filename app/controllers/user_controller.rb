@@ -1,5 +1,7 @@
 class UserController < ApplicationController
 
+
+
   def create
     user = User.new(
       username:params["Username"],
@@ -35,6 +37,7 @@ class UserController < ApplicationController
       tickets:create_user_tickets(user.id),
       reviews:create_user_reviews(user.id)
     }
+    # render json: user
   end
 
   def destroy

@@ -1,3 +1,3 @@
 class TicketSerializer < ActiveModel::Serializer
-  attributes :id,:venue_event, :bought?
+  attributes :id,:venue_event, :bought
 end

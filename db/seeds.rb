@@ -92,9 +92,8 @@ def set_pricing_info(event,event_data)
     event["pricing_info"]["currency"] = event_data["priceRanges"][0]["currency"]
   else
 
-    event["pricing_info"]["min"] = nil
-    event["pricing_info"]["max"] = nil
-    event["pricing_info"]["currency"]  = nil
+    event["pricing_info"] = nil
+
 end
 
 end
@@ -292,7 +291,10 @@ end
 
   run_database(api_links,venue_checker,event_checker,counter)
   user = User.create(username:"edwin",password:"ed",email:"edwinramos269@gmail.com",avatar:"https://png.pngtree.com/svg/20170308/508749a69e.svg")
-  ticket = Ticket.create(user_id:1,venue_event_id:1)
+  ticket = Ticket.create(user_id:1,venue_event_id:1,bought:true)
+  Ticket.create(user_id:1,venue_event_id:2,bought:true)
+    Ticket.create(user_id:1,venue_event_id:3,bought:true)
+    Ticket.create(user_id:1,venue_event_id:5,bought:false)
   venue_event = VenueEvent.find(1)
   review = Review.create(user_id:1,venue_event_id:1,rating:10,body:"THIS IS GREAT WOOOOOO")
 
