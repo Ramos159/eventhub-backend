@@ -15,7 +15,7 @@ class TicketController < ApplicationController
     ticket = Ticket.find(params[:id])
     user = User.find_by(id:params["UserID"])
     if ticket.update(id:params[:id],bought:true)
-        render json:{user:UserSerializer.new(user)}
+        render json: user
     else
       render json:{error:'ticket didnt save!'}
     end
@@ -43,7 +43,7 @@ class TicketController < ApplicationController
     new_ticket.update(bought:true)
   end
 
-  render json: user.tickets
+  render json: {user:UserSerializer.new(user)}
   end
 
   def destroy
@@ -51,7 +51,7 @@ class TicketController < ApplicationController
     ticket = Ticket.find(params[:id])
     user = User.find_by(id:params["UserID"])
     if ticket.destroy
-      render json:{user:UserSerializer.new(user)}
+      render json: {user:UserSerializer.new(user)}
     else
       render json:{error:'ticket didnt delete!'}
     end
