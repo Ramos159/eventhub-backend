@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   post 'tickets/create', to:"ticket#create"
+  patch'tickets/purchase',to:"ticket#purchase"
   # get 'tickets/index', to:"ticket#index"
   # get 'tickets/show/:id', to:"ticket#show"
   delete 'tickets/destroy/:id', to:"ticket#destroy"

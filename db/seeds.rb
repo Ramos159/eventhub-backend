@@ -17,7 +17,7 @@ suggest_link = "https://app.ticketmaster.com/discovery/v2/suggest.json?apikey=#{
 
 venue_checker = {}
 event_checker = {}
-#just something to put on term, ticketmaster api limit at 200 for discovery
+#just something to put on term, ticketmaster api limit at 200 for discoveryAPI
 counter=0
 # you can def put this two objects into one, come back to it later
 
@@ -294,7 +294,6 @@ end
   ticket = Ticket.create(user_id:1,venue_event_id:1,bought:true)
   Ticket.create(user_id:1,venue_event_id:2,bought:true)
     Ticket.create(user_id:1,venue_event_id:3,bought:true)
-    Ticket.create(user_id:1,venue_event_id:5,bought:false)
   venue_event = VenueEvent.find(1)
   review = Review.create(user_id:1,venue_event_id:1,rating:10,body:"THIS IS GREAT WOOOOOO")
 

@@ -34,10 +34,17 @@ class TicketController < ApplicationController
   # end
   #
 
-  # def show
-  #   ticket = Ticket.find(params[:id])
-  #   render json: ticket
-  # end
+  def purchase
+  user = User.find(params['tickets'][0]['user_id'])
+  tickets =  params['tickets']
+
+  tickets.each do |ticket|
+    new_ticket = Ticket.find(ticket['id'])
+    new_ticket.update(bought:true)
+  end
+
+  render json: user.tickets
+  end
 
   def destroy
     # user = session_user
