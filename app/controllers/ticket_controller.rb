@@ -15,7 +15,7 @@ class TicketController < ApplicationController
     ticket = Ticket.find(params[:id])
     user = User.find_by(id:params["UserID"])
     if ticket.update(id:params[:id],bought:true)
-        render json: user
+        render json: {user:UserSerializer.new(user)}
     else
       render json:{error:'ticket didnt save!'}
     end

@@ -6,24 +6,23 @@ class ReviewController < ApplicationController
     review = review.new(user_id:user,venue_event_id:event.id,rating:params[:rating],body:params[:body])
 
     if review.save
-      render json: create_review_obj
+      render json: Review.all
     else
       render json:{error:'invalid review!'}
     end
 
   end
 
-  def create_review_obj
-    obj = {}
-    Review.all.each do |event|
-      obj[event.id] = event
-    end
-    obj
-  end
+  # def create_review_obj
+  #   obj = {}
+  #   Review.all.each do |event|
+  #     obj[event.id] = event
+  #   end
+  #   obj
+  # end
 
   def index
-    reviews = Review.all
-    render json: create_review_obj
+    render json: Review.all
   end
   #
   # def show

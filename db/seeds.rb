@@ -296,5 +296,7 @@ end
     Ticket.create(user_id:1,venue_event_id:3,bought:true)
   venue_event = VenueEvent.find(1)
   review = Review.create(user_id:1,venue_event_id:1,rating:10,body:"THIS IS GREAT WOOOOOO")
+  Review.create(user_id:1,venue_event_id:1,rating:10,body:"so nice, i reviewed it twice")
+  Review.create(user_id:1,venue_event_id:1,rating:10,body:"this is my last review")
 
   run_suggested(suggest_link)
