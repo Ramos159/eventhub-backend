@@ -8,12 +8,12 @@
 require 'rest-client'
 require 'pry'
 
-api_links=["https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=sports&countryCode=US&apikey=#{Rails.application.credentials.api}",
-"https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=music&countryCode=US&apikey=#{Rails.application.credentials.api}",
-"https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=Arts&Theatre&countryCode=US&apikey=#{Rails.application.credentials.api}",
-"https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=miscellaneous&countryCode=US&apikey=#{Rails.application.credentials.api}"]
+api_links=["https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=sports&countryCode=US&apikey=jvZgjta7xQ6FCItBasqCyWrDImGZfmdn",
+"https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=music&countryCode=US&apikey=jvZgjta7xQ6FCItBasqCyWrDImGZfmdn",
+"https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=Arts&Theatre&countryCode=US&apikey=jvZgjta7xQ6FCItBasqCyWrDImGZfmdn",
+"https://app.ticketmaster.com/discovery/v2/events.json?size=200&classificationName=miscellaneous&countryCode=US&apikey=jvZgjta7xQ6FCItBasqCyWrDImGZfmdn"]
 
-suggest_link = "https://app.ticketmaster.com/discovery/v2/suggest.json?apikey=#{Rails.application.credentials.api}"
+suggest_link = "https://app.ticketmaster.com/discovery/v2/suggest.json?apikey=jvZgjta7xQ6FCItBasqCyWrDImGZfmdn"
 
 venue_checker = {}
 event_checker = {}
