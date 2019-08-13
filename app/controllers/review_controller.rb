@@ -3,7 +3,7 @@ class ReviewController < ApplicationController
   def create
     user=User.find(params[:user_id])
     event=VenueEvent.find(:venue_event_id)
-    review = review.new(user_id:user,venue_event_id:event.id,rating:params[:rating],body:params[:body])
+    review = review.new(user_id: user.id,venue_event_id: event.id,rating: params[:reviewRating],body: params[:reviewBody])
 
     if review.save
       render json: Review.all
