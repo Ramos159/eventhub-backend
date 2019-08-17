@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'venues/index', to:"venue#index"
   # get 'venues/show/:id', to:"venue#show"
   get 'venue_events/index', to:"venue_event#index"
-  # get 'venue_events/show/:id', to:"venue_event#show"
+  get 'venue_events/show/:id', to:"venue_event#show"
   get 'events/index', to:"event#index"
   # get 'events/show/:id', to:"event#show"
   post '/register', to:"user#create"

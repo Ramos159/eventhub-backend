@@ -7,13 +7,13 @@ class VenueEventController < ApplicationController
   def create_venue_event_obj
     obj = {}
     VenueEvent.all.each do |event|
-      obj[event.id] = event
+      obj[event.id] = VenueEventSerializer.new(event)
     end
     obj
   end
-  # def show
-  #   venue_event=VenueEvent.find(params[:id])
-  #   render json:venue_event
-  # end
+  def show
+    venue_event=VenueEvent.find(params[:id])
+    render json:venue_event
+  end
 
 end

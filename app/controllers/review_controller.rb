@@ -1,21 +1,23 @@
 class ReviewController < ApplicationController
 
-  def create
-
-    user=User.find(params[:user_id])
-    event=VenueEvent.find(:venue_event_id)
-    review = review.new(user_id: user.id,venue_event_id: event.id,rating: params[:reviewRating],body: params[:reviewBody])
-
-    if review.save
-      render json: Review.all
-    else
-      render json:{error:'invalid review!'}
-    end
-
-  end
 
   def index
     render json: Review.all
+  end
+
+  def create
+
+    render json:{message:"you made it here nigga"}
+    # user=User.find(params[:user_id])
+    # event=VenueEvent.find(:venue_event_id)
+    # review = review.new(user_id: user.id,venue_event_id: event.id,rating: params[:reviewRating],body: params[:reviewBody])
+    #
+    # if review.save
+    #   render json: Review.all
+    # else
+    #   render json:{error:'invalid review!'}
+    # end
+
   end
   #
   # def show

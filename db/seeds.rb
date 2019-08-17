@@ -295,8 +295,11 @@ end
   Ticket.create(user_id:1,venue_event_id:2,bought:true)
     Ticket.create(user_id:1,venue_event_id:3,bought:true)
   venue_event = VenueEvent.find(1)
-  review = Review.create(user_id:1,venue_event_id:1,rating:10,body:"this kinda sucks")
-  Review.create(user_id:1,venue_event_id:1,rating:10,body:"so nice, i reviewed it twice")
-  Review.create(user_id:1,venue_event_id:1,rating:10,body:"this is my last review")
-
+  review = Review.create(user_id:1,venue_event_id:2,rating:0,body:"they only serve pepsi products... this kinda sucks")
+  Review.create(user_id:1,venue_event_id:2,rating:6,body:"Seinfeld > Friends, dont argue with me")
+  Review.create(user_id:1,venue_event_id:2,rating:0,body:"these reviews are kinda janky looking, im working on it")
+  Review.create(user_id:1,venue_event_id:1,rating:10,body:"I know these reviews are coming in later than usual, welcome to async!")
+  Review.create(user_id:1,venue_event_id:1,rating:10,body:"these are seeded reviews, so who cares about whats here for now! Edwin Wuz Here 😎")
+  Review.create(user_id:1,venue_event_id:3,rating:6,body:"If you're reading it's too late.... You're impressed enough to offer me a job on the spot")
   run_suggested(suggest_link)
+  binding.pry
